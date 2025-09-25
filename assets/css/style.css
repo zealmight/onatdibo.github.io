@@ -167,10 +167,13 @@ p.description {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
+  width: 100vw; /* Tüm ekran genişliği */
+  max-width: 100vw; /* Maksimum genişlik sınırı */
   color: var(--text-color);
   text-align: center;
   padding: 15px 10px;
   font-size: 0.875rem;
   z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Hafif üst gölge */
+  overflow-x: hidden; /* Yatay kaydırmayı engelle */
 }
