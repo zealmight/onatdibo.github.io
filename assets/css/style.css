@@ -168,11 +168,9 @@ p.description {
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--container-bg);
   color: var(--text-color);
   text-align: center;
   padding: 15px 10px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
   font-size: 0.875rem;
   z-index: 1000;
 }
