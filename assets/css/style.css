@@ -1,0 +1,159 @@
+/* Temel renk değişkenleri */
+:root {
+  /* Açık tema arka plan ve metin renkleri */
+  --bg-color: #e1e3ea; /* Soft gri-mavi */
+  --text-color: #2c2e3e; /* Yumuşak koyu metin */
+  --container-bg: #f5f6fa; /* Çok açık gri kutu */
+  --container-shadow: rgba(0, 0, 0, 0.08); /* Hafif gölge */
+  --profile-border: #5b5fc7; /* Yumuşak mor-mavi */
+  --description-color: #54556a; /* Orta koyulukta açıklama */
+
+  /* Şirket link rengi */
+  --company-bg: #3a9454; /* Koyu soft yeşil */
+  --company-bg-hover: #2f7441;
+}
+
+/* Dark mode renkleri */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #171828; /* Çok koyu mavi-siyah */
+    --text-color: #d1d2da; /* Soft açık metin */
+    --container-bg: #212235; /* Koyu gece mavisi */
+    --container-shadow: rgba(0, 0, 0, 0.35);
+    --profile-border: #6a5cc5; /* Hafif parlak mor-mavi */
+    --description-color: #b9bad7;
+
+    --company-bg: #5ec06d; /* Açık soft yeşil */
+    --company-bg-hover: #49a257;
+  }
+}
+
+/* Genel sayfa stili */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Ana içerik kutusu */
+.container {
+  background: var(--container-bg);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px var(--container-shadow);
+  width: 320px;
+  max-width: 90vw;
+}
+
+/* Profil resmi */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 20px auto;
+  display: block;
+  border: 4px solid var(--profile-border);
+  transition: transform 0.3s ease;
+}
+.profile-img:hover {
+  transform: scale(1.05);
+}
+
+/* Başlık */
+h1 {
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+/* Açıklama metni */
+p.description {
+  margin-bottom: 25px;
+  font-size: 1rem;
+  color: var(--description-color);
+}
+
+/* Sosyal medya linkleri */
+.links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* İkon ile yazı arası boşluk */
+
+  color: white;
+  padding: 12px 0;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  font-size: 1.1rem;
+}
+
+/* LinkedIn renk */
+.links a.linkedin {
+  background-color: #0077b5;
+}
+.links a.linkedin:hover {
+  background-color: #005983;
+}
+
+/* Instagram renk - gradient */
+.links a.instagram {
+  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+}
+.links a.instagram:hover {
+  filter: brightness(1.1);
+}
+
+/* Kick renk */
+.links a.kick {
+  background-color: #2f2f71;
+}
+.links a.kick:hover {
+  background-color: #1a1a40;
+}
+
+/* Şirket linki buton stili */
+.links a.company {
+  background-color: var(--company-bg);
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.links a.company:hover {
+  background-color: var(--company-bg-hover);
+}
+
+
+/* Responsive */
+@media (max-width: 400px) {
+  .container {
+    padding: 20px;
+    width: 95vw;
+  }
+
+  .profile-img {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .links a {
+    padding: 10px 0;
+    font-size: 1rem;
+  }
+}
