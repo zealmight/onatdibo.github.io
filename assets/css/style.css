@@ -126,14 +126,14 @@ p.description {
 }
 
 
-/* Şirket linki buton stili */
-.links a.company {
+/* Email linki buton stili */
+.links a.sendmail {
   background-color: var(--company-bg);
   color: white;
   transition: background-color 0.3s ease;
 }
 
-.links a.company:hover {
+.links a.sendmail:hover {
   background-color: var(--company-bg-hover);
 }
 
