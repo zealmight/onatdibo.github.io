@@ -1,178 +1,350 @@
-/* Temel renk değişkenleri */
-:root {
-  /* Açık tema arka plan ve metin renkleri */
-  --bg-color: #e1e3ea; /* Soft gri-mavi */
-  --text-color: #2c2e3e; /* Yumuşak koyu metin */
-  --container-bg: #f5f6fa; /* Çok açık gri kutu */
-  --container-shadow: rgba(0, 0, 0, 0.08); /* Hafif gölge */
-  --profile-border: #5b5fc7; /* Yumuşak mor-mavi */
-  --description-color: #54556a; /* Orta koyulukta açıklama */
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  /* Şirket link rengi */
-  --company-bg: #3a9454; /* Koyu soft yeşil */
-  --company-bg-hover: #2f7441;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0f172a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+            transition: background 0.3s ease;
+        }
 
-/* Dark mode renkleri */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #171828; /* Çok koyu mavi-siyah */
-    --text-color: #d1d2da; /* Soft açık metin */
-    --container-bg: #212235; /* Koyu gece mavisi */
-    --container-shadow: rgba(0, 0, 0, 0.35);
-    --profile-border: #6a5cc5; /* Hafif parlak mor-mavi */
-    --description-color: #b9bad7;
+        body.light-mode {
+            background: #f8fafc;
+        }
 
-    --company-bg: #5ec06d; /* Açık soft yeşil */
-    --company-bg-hover: #49a257;
-  }
-}
+        .container {
+            flex: 1;
+            max-width: 680px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-/* Genel sayfa stili */
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.6s ease-out;
+        }
 
-/* Ana içerik kutusu */
-.container {
-  background: var(--container-bg);
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 0 15px var(--container-shadow);
-  width: 320px;
-  max-width: 90vw;
-}
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: #1e293b;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #60a5fa;
+            border: 3px solid #334155;
+        }
 
-/* Profil resmi */
-.profile-img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 20px auto;
-  display: block;
-  border: 4px solid var(--profile-border);
-  transition: transform 0.3s ease;
-}
-.profile-img:hover {
-  transform: scale(1.05);
-}
+        body.light-mode .profile-image {
+            background: white;
+            color: #3b82f6;
+            border: 3px solid #e2e8f0;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
 
-/* Başlık */
-h1 {
-  margin-bottom: 10px;
-  font-weight: 700;
-  font-size: 2rem;
-}
+        .profile-name {
+            font-size: 28px;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 8px;
+        }
 
-/* Açıklama metni */
-p.description {
-  margin-bottom: 25px;
-  font-size: 1rem;
-  color: var(--description-color);
-}
+        body.light-mode .profile-name {
+            color: #1e293b;
+        }
 
-/* Sosyal medya linkleri */
-.links a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* İkon ile yazı arası boşluk */
+        .profile-bio {
+            font-size: 16px;
+            color: #cbd5e1;
+            line-height: 1.5;
+        }
 
-  color: white;
-  padding: 12px 0;
-  margin-bottom: 15px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: background-color 0.3s ease;
-  font-size: 1.1rem;
-}
+        body.light-mode .profile-bio {
+            color: #64748b;
+        }
 
-/* LinkedIn renk */
-.links a.linkedin {
-  background-color: #0077b5;
-}
-.links a.linkedin:hover {
-  background-color: #005983;
-}
+        .links-section {
+            width: 100%;
+            animation: fadeInUp 0.6s ease-out;
+        }
 
+        .link-item {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-bottom: 16px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            border: 1px solid #334155;
+        }
 
-/* Instagram renk - gradient */
-.links a.instagram {
-  background: linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-}
-.links a.instagram:hover {
-  filter: brightness(1.1);
-}
+        body.light-mode .link-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
 
+        .link-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: #475569;
+        }
 
-/* Kick renk */
-.links a.kick {
-  background-color: #2f2f71;
-}
-.links a.kick:hover {
-  background-color: #1a1a40;
-}
+        body.light-mode .link-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
 
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+        }
 
-/* Email linki buton stili */
-.links a.sendmail {
-  background-color: var(--company-bg);
-  color: white;
-  transition: background-color 0.3s ease;
-}
+        .link-icon {
+            font-size: 24px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #334155;
+            border-radius: 8px;
+        }
 
-.links a.sendmail:hover {
-  background-color: var(--company-bg-hover);
-}
+        body.light-mode .link-icon {
+            background: #f1f5f9;
+        }
 
+        .link-text {
+            font-size: 16px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
 
-/* Responsive */
-@media (max-width: 400px) {
-  .container {
-    padding: 20px;
-    width: 95vw;
-  }
+        body.light-mode .link-text {
+            color: #334155;
+        }
 
-  .profile-img {
-    width: 100px;
-    height: 100px;
-    border-width: 3px;
-  }
+        .link-arrow {
+            color: #64748b;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
 
-  h1 {
-    font-size: 1.5rem;
-  }
+        body.light-mode .link-arrow {
+            color: #94a3b8;
+        }
 
-  .links a {
-    padding: 10px 0;
-    font-size: 1rem;
-  }
-}
+        .link-item:hover .link-arrow {
+            transform: translateX(4px);
+        }
 
-/* Footer Design */
+        footer {
+            background: #1e293b;
+            padding: 24px 20px;
+            text-align: center;
+            color: #cbd5e1;
+            margin-top: auto;
+            border-top: 1px solid #334155;
+        }
 
-.site-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw; /* Tüm ekran genişliği */
-  max-width: 100vw; /* Maksimum genişlik sınırı */
-  color: var(--text-color);
-  text-align: center;
-  padding: 15px 10px;
-  font-size: 0.875rem;
-  z-index: 1000;
-  overflow-x: hidden; /* Yatay kaydırmayı engelle */
-}
+        body.light-mode footer {
+            background: white;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .footer-content {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #1e293b;
+            border: 2px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+
+        body.light-mode .theme-toggle {
+            background: white;
+            border-color: #e2e8f0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 16px;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .profile-name {
+                font-size: 24px;
+            }
+
+            .profile-bio {
+                font-size: 14px;
+            }
+
+            .link-item {
+                padding: 16px 20px;
+            }
+
+            .link-text {
+                font-size: 15px;
+            }
+
+            .theme-toggle {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            footer {
+                padding: 20px 16px;
+            }
+
+            .footer-text {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px 12px;
+            }
+
+            .profile-image {
+                width: 90px;
+                height: 90px;
+                font-size: 36px;
+            }
+
+            .profile-name {
+                font-size: 22px;
+            }
+
+            .profile-bio {
+                font-size: 13px;
+            }
+
+            .link-item {
+                padding: 14px 16px;
+            }
+
+            .link-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 20px;
+            }
+
+            .link-text {
+                font-size: 14px;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                top: 15px;
+                right: 15px;
+            }
+
+            footer {
+                padding: 16px 12px;
+            }
+
+            .footer-text {
+                font-size: 12px;
+            }
+        }
+
+        /* Çok küçük ekranlar için (iPhone SE, küçük Android telefonlar) */
+        @media (max-width: 360px) {
+            .profile-image {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+
+            .profile-name {
+                font-size: 20px;
+            }
+
+            .link-item {
+                padding: 12px 14px;
+            }
+
+            .link-text {
+                font-size: 13px;
+            }
+        }
