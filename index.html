@@ -1,99 +1,55 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="tr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onat Dibo | Hakkımda</title>
+    <title>Onat Dibo</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <button class="theme-toggle" id="themeToggle" aria-label="Tema Değiştir">
-        🌙 <!-- Dark mode: 🌙 | Light mode: 🌞 (otomatik değişir) -->
-    </button>
+    <button class="theme-toggle" id="themeToggle">🌙</button>
 
-    <div class="container">
-        <div class="profile-section">
-            <!-- Profil resmi ikonu - Değiştirilebilir: 👤, 👨, 👩, 🧑, 😊, 🎭, 🎨, 💼 vb. -->
-            <div class="profile-image">
-                <img src="img/profile.jpg" alt="Profil Resmi"
-                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
-            </div>
-            <h1 class="profile-name">Onat Dibo</h1>
+    <main class="main-content">
+        <div class="profile">
+            <img src="img/profile.jpg" alt="Onat Dibo" class="profile-img">
+            <h1>Onat Dibo</h1>
             <p class="profile-bio">Cyber Security | Network</p>
+            <p class="profile-description">Bilgisayar Teknolojileri mezunu, Cisco Siber Güvenlik sertifikalı. Sürekli
+                öğrenen, sektörü takip eden ve yenilikçi çözümler üreten teknoloji profesyoneli.</p>
         </div>
 
-        <div class="links-section">
-
-            <!-- Link 1 - Instagram -->
-            <!-- İkonu değiştirmek için: 📸, 📷, IG, 💜 vb. -->
-            <a href="https://instagram.com/_onatd" class="link-item" target="_blank">
-                <div class="link-content">
-                    <div class="link-icon">📸</div>
-                    <span class="link-text">Instagram</span>
-                </div>
-                <span class="link-arrow">→</span>
+        <div class="links">
+            <a href="https://instagram.com/_onatd" target="_blank" class="link">
+                <span class="link-icon">📸</span>
+                <span>Instagram</span>
+                <span class="arrow">→</span>
             </a>
 
-            <!-- Link 2 - YouTube -->
-            <!-- İkonu değiştirmek için: 🎥, 📹, YT, ▶️, 🎬 vb. -->
-            <a href="https://github.com/zealmight" class="link-item" target="_blank">
-                <div class="link-content">
-                    <div class="link-icon">📁</div>
-                    <span class="link-text">Github</span>
-                </div>
-                <span class="link-arrow">→</span>
+            <a href="https://github.com/zealmight" target="_blank" class="link">
+                <span class="link-icon">📁</span>
+                <span>Github</span>
+                <span class="arrow">→</span>
             </a>
 
-            <!-- Link 3 - LinkedIn -->
-            <!-- İkonu değiştirmek için: 💼, 👔, LI, 🤝, 💻 vb. -->
-            <a href="https://linkedin.com/in/onatdibo" class="link-item" target="_blank">
-                <div class="link-content">
-                    <div class="link-icon">💼</div>
-                    <span class="link-text">LinkedIn</span>
-                </div>
-                <span class="link-arrow">→</span>
+            <a href="https://linkedin.com/in/onatdibo" target="_blank" class="link">
+                <span class="link-icon">💼</span>
+                <span>LinkedIn</span>
+                <span class="arrow">→</span>
             </a>
 
-            <!-- Link 4 - İletişim -->
-            <!-- İkonu değiştirmek için: 📧, ✉️, 💌, 📬, 📮 vb. -->
-            <a href="mailto:info@onatdibo.com" class="link-item" target="_blank">
-                <div class="link-content">
-                    <div class="link-icon">📧</div>
-                    <span class="link-text">İletişim</span>
-                </div>
-                <span class="link-arrow">→</span>
+            <a href="mailto:info@onatdibo.com" class="link">
+                <span class="link-icon">📧</span>
+                <span>İletişim</span>
+                <span class="arrow">→</span>
             </a>
-
-            <!-- 
-            YENİ LINK EKLEMEK İÇİN:
-            Aşağıdaki kodu kopyalayıp yukarıya ekleyin ve içeriği değiştirin:
-            
-            <a href="#" class="link-item">
-                <div class="link-content">
-                    <div class="link-icon">🎵</div>
-                    <span class="link-text">Spotify</span>
-                </div>
-                <span class="link-arrow">→</span>
-            </a>
-            
-            DİĞER POPÜLER İKONLAR:
-            🎵 Spotify/Müzik    🎮 Oyun/Twitch      📱 Uygulama
-            🛒 Shop/Mağaza      📝 Blog/Yazı        🎨 Portfolio
-            💬 Discord          📞 Telefon          🌟 Favoriler
-            🔗 Diğer Linkler    ⭐ Öne Çıkanlar    🎁 Hediye
-            -->
         </div>
-    </div>
 
-    <footer>
-        <div class="footer-content">
-            <p class="footer-text">Made with ❤️ by Onat Dibo</p>
-            <p class="footer-text" style="margin-top: 8px; font-size: 12px; opacity: 0.7;">© 2025 Tüm hakları saklıdır
-            </p>
-        </div>
-    </footer>
+        <footer>
+            <p>Made with ❤️ by Onat Dibo</p>
+        </footer>
+    </main>
 
     <script src="assets/js/main.js"></script>
 </body>

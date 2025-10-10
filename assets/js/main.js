@@ -1,21 +1,18 @@
-const themeToggle = document.getElementById('themeToggle');
+const toggle = document.getElementById('themeToggle');
 const body = document.body;
 
-// Kayıtlı temayı yükle
-const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-    body.classList.add('light-mode');
-    themeToggle.textContent = '🌞';
+if(localStorage.getItem('theme') === 'light') {
+    body.classList.add('light');
+    toggle.textContent = '🌞';
 }
 
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-
-    if (body.classList.contains('light-mode')) {
-        themeToggle.textContent = '🌞';
+toggle.addEventListener('click', () => {
+    body.classList.toggle('light');
+    if(body.classList.contains('light')) {
+        toggle.textContent = '🌞';
         localStorage.setItem('theme', 'light');
     } else {
-        themeToggle.textContent = '🌙';
+        toggle.textContent = '🌙';
         localStorage.setItem('theme', 'dark');
     }
 });
