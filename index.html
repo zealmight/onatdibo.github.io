@@ -5,57 +5,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:title" content="Onat Dibo">
-    <meta property="og:description" content="Kişisel web sitem — Sosyal Medya bağlantılarım ve daha fazlası.">
-    <meta property="og:image" content="https://onatdibo.com/img/profile.jpg">
-    <meta property="og:url" content="https://onatdibo.com/">
+    <meta property="og:description" content="Bağlantılar">
     <meta property="og:type" content="website">
     <link rel="icon" href="img/favicon.png">
-    <title>Onat Dibo</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <title>Onat Dibo</title>
 </head>
 
 <body>
-    <button class="theme-toggle" id="themeToggle">🌙</button>
+    <button class="theme-btn" id="themeBtn" aria-label="Tema">🌙</button>
 
-    <main class="main-content">
-        <div class="profile">
-            <img src="img/profile.jpg" alt="Onat Dibo" class="profile-img">
-            <h1>Onat Dibo</h1>
-            <p class="profile-bio">Cyber Security | Network</p>
-            <p class="profile-description">Bilgisayar Teknolojileri mezunu, Cisco Siber Güvenlik sertifikalı. Sürekli
-                öğrenen, sektörü takip eden ve yenilikçi çözümler üreten teknoloji profesyoneli.</p>
+    <div class="wrapper">
+        <div class="header">
+            <img src="img/profile.jpg" alt="Onat Dibo" class="avatar">
+            <div class="name">Onat Dibo</div>
+            <div class="bio">Cyber Security | Network</div>
+            <div class="description">Bilgisayar Teknolojileri mezunu, Cisco onaylı Siber Güvenlik sertifikasına sahip. Sürekli öğrenme motivasyonu yüksek, sektördeki gelişmeleri yakından takip eden ve yenilikçi çözümler üretmeye odaklanan bir teknoloji profesyoneli.</div>
         </div>
 
         <div class="links">
-            <a href="https://instagram.com/_onatd" target="_blank" class="link">
-                <span class="link-icon">📸</span>
-                <span>Instagram</span>
-                <span class="arrow">→</span>
+            <a href="https://instagram.com/_onatd" target="_blank" rel="noopener noreferrer" class="link">
+                <div class="link-left">
+                    <i data-lucide="instagram" class="link-icon"></i>
+                    <span>Instagram</span>
+                </div>
+                <i data-lucide="arrow-right" class="link-arrow"></i>
             </a>
 
-            <a href="https://github.com/zealmight" target="_blank" class="link">
-                <span class="link-icon">📁</span>
-                <span>Github</span>
-                <span class="arrow">→</span>
+            <a href="https://github.com/zealmight" target="_blank" rel="noopener noreferrer" class="link">
+                <div class="link-left">
+                    <i data-lucide="github" class="link-icon"></i>
+                    <span>GitHub</span>
+                </div>
+                <i data-lucide="arrow-right" class="link-arrow"></i>
             </a>
 
-            <a href="https://linkedin.com/in/onatdibo" target="_blank" class="link">
-                <span class="link-icon">💼</span>
-                <span>LinkedIn</span>
-                <span class="arrow">→</span>
+            <a href="https://linkedin.com/in/onatdibo" target="_blank" rel="noopener noreferrer" class="link">
+                <div class="link-left">
+                    <i data-lucide="linkedin" class="link-icon"></i>
+                    <span>LinkedIn</span>
+                </div>
+                <i data-lucide="arrow-right" class="link-arrow"></i>
             </a>
 
             <a href="mailto:info@onatdibo.com" class="link">
-                <span class="link-icon">📧</span>
-                <span>İletişim</span>
-                <span class="arrow">→</span>
+                <div class="link-left">
+                    <i data-lucide="mail" class="link-icon"></i>
+                    <span>E-posta</span>
+                </div>
+                <i data-lucide="arrow-right" class="link-arrow"></i>
+            </a>
+
+            <a href="https://kick.com/zealmight" target="_blank" rel="noopener noreferrer" class="link">
+                <div class="link-left">
+                    <i data-lucide="tv" class="link-icon"></i>
+                    <span>Kick Stream</span>
+                </div>
+                <i data-lucide="arrow-right" class="link-arrow"></i>
             </a>
         </div>
 
-        <footer>
-            <p>Made with ❤️ by Onat Dibo</p>
-        </footer>
-    </main>
+        <div class="footer">
+            © 2025 Onat Dibo. 🥷 Tüm hakları saklıdır.
+        </div>
+    </div>
 
     <script src="assets/js/main.js"></script>
 </body>

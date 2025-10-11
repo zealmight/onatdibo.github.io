@@ -1,18 +1,18 @@
-const toggle = document.getElementById('themeToggle');
+// Initialize Lucide icons
+lucide.createIcons();
+
+const themeBtn = document.getElementById('themeBtn');
 const body = document.body;
 
-if(localStorage.getItem('theme') === 'light') {
-    body.classList.add('light');
-    toggle.textContent = '🌞';
+const theme = localStorage.getItem('theme') || 'light';
+if (theme === 'dark') {
+    body.classList.add('dark');
+    themeBtn.textContent = '☀️';
 }
 
-toggle.addEventListener('click', () => {
-    body.classList.toggle('light');
-    if(body.classList.contains('light')) {
-        toggle.textContent = '🌞';
-        localStorage.setItem('theme', 'light');
-    } else {
-        toggle.textContent = '🌙';
-        localStorage.setItem('theme', 'dark');
-    }
+themeBtn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+    const isDark = body.classList.contains('dark');
+    themeBtn.textContent = isDark ? '☀️' : '🌙';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
 });
