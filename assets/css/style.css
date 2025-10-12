@@ -26,10 +26,16 @@ body {
     padding: 16px;
     transition: background 0.3s, color 0.3s;
     overflow: hidden;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .wrapper {
-    max-width: 400px;
+    max-width: 320px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -83,9 +89,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 14px;
+    padding: 8px 10px;
     border: 1px solid var(--border);
-    border-radius: 12px;
+    border-radius: 8px;
     text-decoration: none;
     color: var(--text);
     font-size: 13px;
@@ -240,6 +246,7 @@ body.dark {
     }
 
     .wrapper {
+        max-width: 300px;
         max-height: calc(100vh - 24px);
     }
 
@@ -272,7 +279,7 @@ body.dark {
     }
 
     .link {
-        padding: 10px 12px;
+        padding: 7px 9px;
         font-size: 12px;
     }
 

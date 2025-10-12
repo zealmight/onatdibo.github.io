@@ -1,6 +1,36 @@
 // Initialize Lucide icons
 lucide.createIcons();
 
+// Security: Disable right-click, F12, and developer tools
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+document.addEventListener('keydown', function(e) {
+    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+Shift+C
+    if (e.keyCode === 123 || // F12
+        (e.ctrlKey && e.shiftKey && e.keyCode === 73) || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.keyCode === 74) || // Ctrl+Shift+J
+        (e.ctrlKey && e.keyCode === 85) || // Ctrl+U
+        (e.ctrlKey && e.shiftKey && e.keyCode === 67)) { // Ctrl+Shift+C
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Disable text selection
+document.addEventListener('selectstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Disable drag
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
 const themeBtn = document.getElementById('themeBtn');
 const body = document.body;
 
