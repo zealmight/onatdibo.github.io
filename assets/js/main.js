@@ -24,6 +24,12 @@ const htmlElement = document.documentElement;
 
 // Get saved language or default to Turkish
 const savedLanguage = localStorage.getItem('language') || 'tr';
+document.body.classList.add(`lang-${savedLanguage}`);
+if (savedLanguage === 'tr') {
+    trBtn.classList.add('active');
+} else {
+    enBtn.classList.add('active');
+}
 setLanguage(savedLanguage);
 
 function setLanguage(lang) {
@@ -34,18 +40,46 @@ function setLanguage(lang) {
     trBtn.classList.toggle('active', lang === 'tr');
     enBtn.classList.toggle('active', lang === 'en');
     
-    // Update all elements with data-tr and data-en attributes
-    const elementsWithLang = document.querySelectorAll('[data-tr][data-en]');
-    elementsWithLang.forEach(element => {
-        const text = element.getAttribute(`data-${lang}`);
+    // ONLY update elements that actually need translation
+    // Bio
+    const bio = document.querySelector('.bio');
+    if (bio && bio.hasAttribute('data-tr') && bio.hasAttribute('data-en')) {
+        bio.textContent = bio.getAttribute(`data-${lang}`);
+    }
+    
+    // Description
+    const description = document.querySelector('.description');
+    if (description && description.hasAttribute('data-tr') && description.hasAttribute('data-en')) {
+        description.textContent = description.getAttribute(`data-${lang}`);
+    }
+    
+    // Email span - use more specific selector
+    const emailLink = document.querySelector('a[href^="mailto:"]');
+    if (emailLink) {
+        const emailSpan = emailLink.querySelector('span[data-tr]');
+        if (emailSpan) {
+            emailSpan.textContent = emailSpan.getAttribute(`data-${lang}`);
+        }
+    }
+    
+    // Footer
+    const footerSpan = document.querySelector('.footer span');
+    if (footerSpan && footerSpan.hasAttribute('data-tr') && footerSpan.hasAttribute('data-en')) {
+        footerSpan.textContent = footerSpan.getAttribute(`data-${lang}`);
+    }
+    
+    // Title
+    const title = document.querySelector('title');
+    if (title && title.hasAttribute('data-tr') && title.hasAttribute('data-en')) {
+        title.textContent = title.getAttribute(`data-${lang}`);
+    }
+    
+    // Meta tags
+    const metaTags = document.querySelectorAll('meta[data-tr][data-en]');
+    metaTags.forEach(meta => {
+        const text = meta.getAttribute(`data-${lang}`);
         if (text) {
-            if (element.tagName === 'TITLE') {
-                element.textContent = text;
-            } else if (element.hasAttribute('content')) {
-                element.setAttribute('content', text);
-            } else {
-                element.textContent = text;
-            }
+            meta.setAttribute('content', text);
         }
     });
     
@@ -54,5 +88,18 @@ function setLanguage(lang) {
 }
 
 // Add event listeners for language buttons
-trBtn.addEventListener('click', () => setLanguage('tr'));
-enBtn.addEventListener('click', () => setLanguage('en'));
+trBtn.addEventListener('click', () => {
+    document.body.classList.remove('lang-en');
+    document.body.classList.add('lang-tr');
+    trBtn.classList.add('active');
+    enBtn.classList.remove('active');
+    localStorage.setItem('language', 'tr');
+});
+
+enBtn.addEventListener('click', () => {
+    document.body.classList.remove('lang-tr');
+    document.body.classList.add('lang-en');
+    enBtn.classList.add('active');
+    trBtn.classList.remove('active');
+    localStorage.setItem('language', 'en');
+});

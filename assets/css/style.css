@@ -94,6 +94,33 @@ body {
     background: var(--bg);
 }
 
+.link span {
+    white-space: nowrap;
+    letter-spacing: normal;
+    font-kerning: auto;
+}
+
+/* CSS-based language switching */
+[data-tr]:before {
+    content: attr(data-tr);
+}
+
+.lang-en [data-tr]:before {
+    content: attr(data-en);
+}
+
+/* Hide original text when using CSS content */
+.lang-tr [data-tr],
+.lang-en [data-tr] {
+    font-size: 0;
+}
+
+.lang-tr [data-tr]:before,
+.lang-en [data-tr]:before {
+    font-size: 13px;
+}
+
+
 .link:hover {
     background: var(--hover);
     border-color: var(--accent);
