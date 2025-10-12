@@ -34,6 +34,17 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.6;
+}
+
 .wrapper {
     max-width: 320px;
     width: 100%;
@@ -42,6 +53,8 @@ body {
     max-height: calc(100vh - 32px);
     overflow-y: auto;
     overflow-x: hidden;
+    position: relative;
+    z-index: 2;
 }
 
 .header {

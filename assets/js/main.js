@@ -154,3 +154,152 @@ enBtn.addEventListener('click', () => {
     
     localStorage.setItem('language', 'en');
 });
+
+// Particle Effect System
+class ParticleSystem {
+    constructor() {
+        this.canvas = document.getElementById('particleCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.particleCount = 50;
+        this.mouse = { x: 0, y: 0 };
+        
+        this.init();
+        this.bindEvents();
+        this.animate();
+    }
+    
+    init() {
+        this.resize();
+        this.createParticles();
+    }
+    
+    resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+    }
+    
+    createParticles() {
+        this.particles = [];
+        for (let i = 0; i < this.particleCount; i++) {
+            this.particles.push({
+                x: Math.random() * this.canvas.width,
+                y: Math.random() * this.canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5,
+                size: Math.random() * 2 + 1,
+                opacity: Math.random() * 0.5 + 0.2,
+                originalOpacity: Math.random() * 0.5 + 0.2
+            });
+        }
+    }
+    
+    getThemeColors() {
+        const isDark = document.body.classList.contains('dark');
+        return {
+            particle: isDark ? 'rgba(250, 250, 250, ' : 'rgba(10, 10, 10, ',
+            connection: isDark ? 'rgba(250, 250, 250, ' : 'rgba(10, 10, 10, '
+        };
+    }
+    
+    updateParticles() {
+        const colors = this.getThemeColors();
+        
+        this.particles.forEach(particle => {
+            // Update position
+            particle.x += particle.vx;
+            particle.y += particle.vy;
+            
+            // Bounce off edges
+            if (particle.x < 0 || particle.x > this.canvas.width) {
+                particle.vx *= -1;
+            }
+            if (particle.y < 0 || particle.y > this.canvas.height) {
+                particle.vy *= -1;
+            }
+            
+            // Keep particles within bounds
+            particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
+            particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
+            
+            // Subtle mouse interaction
+            const dx = this.mouse.x - particle.x;
+            const dy = this.mouse.y - particle.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+            
+            if (distance < 100) {
+                const force = (100 - distance) / 100;
+                particle.vx -= (dx / distance) * force * 0.01;
+                particle.vy -= (dy / distance) * force * 0.01;
+                particle.opacity = particle.originalOpacity + force * 0.3;
+            } else {
+                particle.opacity = particle.originalOpacity;
+            }
+            
+            // Limit velocity
+            particle.vx = Math.max(-1, Math.min(1, particle.vx));
+            particle.vy = Math.max(-1, Math.min(1, particle.vy));
+        });
+    }
+    
+    drawParticles() {
+        const colors = this.getThemeColors();
+        
+        // Draw particles
+        this.particles.forEach(particle => {
+            this.ctx.beginPath();
+            this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+            this.ctx.fillStyle = colors.particle + particle.opacity + ')';
+            this.ctx.fill();
+        });
+        
+        // Draw connections between nearby particles
+        for (let i = 0; i < this.particles.length; i++) {
+            for (let j = i + 1; j < this.particles.length; j++) {
+                const dx = this.particles[i].x - this.particles[j].x;
+                const dy = this.particles[i].y - this.particles[j].y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < 120) {
+                    const opacity = (120 - distance) / 120 * 0.1;
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                    this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                    this.ctx.strokeStyle = colors.connection + opacity + ')';
+                    this.ctx.lineWidth = 0.5;
+                    this.ctx.stroke();
+                }
+            }
+        }
+    }
+    
+    animate() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.updateParticles();
+        this.drawParticles();
+        requestAnimationFrame(() => this.animate());
+    }
+    
+    bindEvents() {
+        window.addEventListener('resize', () => {
+            this.resize();
+            this.createParticles();
+        });
+        
+        window.addEventListener('mousemove', (e) => {
+            this.mouse.x = e.clientX;
+            this.mouse.y = e.clientY;
+        });
+        
+        // Reset mouse position when leaving the window
+        window.addEventListener('mouseleave', () => {
+            this.mouse.x = -1000;
+            this.mouse.y = -1000;
+        });
+    }
+}
+
+// Initialize particle system when page loads
+window.addEventListener('load', () => {
+    new ParticleSystem();
+});
