@@ -30,6 +30,13 @@ if (savedLanguage === 'tr') {
 } else {
     enBtn.classList.add('active');
 }
+
+// Set initial title
+const title = document.querySelector('title');
+if (title) {
+    title.textContent = title.getAttribute(`data-${savedLanguage}`);
+}
+
 setLanguage(savedLanguage);
 
 function setLanguage(lang) {
@@ -93,6 +100,13 @@ trBtn.addEventListener('click', () => {
     document.body.classList.add('lang-tr');
     trBtn.classList.add('active');
     enBtn.classList.remove('active');
+    
+    // Update title
+    const title = document.querySelector('title');
+    if (title) {
+        title.textContent = title.getAttribute('data-tr');
+    }
+    
     localStorage.setItem('language', 'tr');
 });
 
@@ -101,5 +115,12 @@ enBtn.addEventListener('click', () => {
     document.body.classList.add('lang-en');
     enBtn.classList.add('active');
     trBtn.classList.remove('active');
+    
+    // Update title
+    const title = document.querySelector('title');
+    if (title) {
+        title.textContent = title.getAttribute('data-en');
+    }
+    
     localStorage.setItem('language', 'en');
 });
