@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Security
+Disallow: /assets/
+Disallow: /img/
+Disallow: /.git/
+Disallow: /.*
+
+Sitemap: https://onatdibo.com/sitemap.xml
